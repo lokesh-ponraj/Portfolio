@@ -13,10 +13,13 @@ const Projects = () => {
     <span className="section__subtitle">That I have made</span>
 
     <div className="projects__container container grid">
-        <div className="projects__content">
+
+
+{/* NUMBER 1 LMS */}
+    <div className="projects__content">
             <div>
-                <i className="uil uil-car projects__icon"></i>
-                <h3 className="projects__title">Object sensing car</h3>
+                <i className="uil uil-book projects__icon"></i>
+                <h3 className="projects__title">LMS</h3>
             </div>
 
             <span className="projects__button" onClick={() => toggleTab(1)}>View More
@@ -26,142 +29,144 @@ const Projects = () => {
             <div className={toggleState === 1 ? "projects__modal active-modal" : "projects__modal"}>
                 <div className="projects__modal-content">
                     <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
-                    <h3 className="projects__modal-title">Obstacle Avoiding Robot</h3>
+                    <h3 className="projects__modal-title">Library Management System</h3>
                     <p className="projects__modal-description">
-                        Remote controllable setup
+                        Django-based Project
                     </p>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Usage of Sonar sensor.</p>
+                            <p className="projects__modal-info">Client and Server side.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Can sense upto 5 meters.</p>
+                            <p className="projects__modal-info">Containerisation using Docker.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Can be used for spying purpose.</p>
+                            <p className="projects__modal-info">PostgreSQL Database Integrated.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Independent working model.</p>
+                            <p className="projects__modal-info">Works on a virtual environment.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Bluetooth connectivity to control.</p>
+                            <p className="projects__modal-info">Bootstrap Components.</p>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>    
 
+{/* NUMBER 2 CMS */}
 
         <div className="projects__content">
             <div>
-                <i className="uil uil-battery-bolt projects__icon"></i>
-                <h3 className="projects__title">24/7 Solar Charger</h3>
+            <i class="uil uil-users-alt projects__icon"></i>
+                <h3 className="projects__title">CMS</h3>
             </div>
 
-            <span className="projects__button" onClick={()=>toggleTab(2)}>View More
+            <span className="projects__button" onClick={() => toggleTab(2)}>View More
             <i className="uil uil-arrow-right projects__button-icon"></i>
             </span>
 
             <div className={toggleState === 2 ? "projects__modal active-modal" : "projects__modal"}>
                 <div className="projects__modal-content">
-                    <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                    <h3 className="projects__modal-title">Automated Day and Night Solar Charging</h3>
+                    <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
+                    <h3 className="projects__modal-title">Club Management System</h3>
                     <p className="projects__modal-description">
-                        By using Arduino UNO, the whole setup is automated.
+                        Django-based Full stack app
                     </p>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">24/7 electricity production</p>
+                            <p className="projects__modal-info">Made for English language club.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">IR blasters are used as a artificial source.</p>
+                            <p className="projects__modal-info">Information about club activities.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Automatic sensing of climatic changes.</p>
+                            <p className="projects__modal-info">CLub members details.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">All stats can be monitored.</p>
+                            <p className="projects__modal-info">Language Hub.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Comparatively Less energy consumption.</p>
+                            <p className="projects__modal-info">Dockerised.</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
 
+{/* NUMBER 3 ADYA */}
 
         <div className="projects__content">
             <div>
-                <i className="uil uil-laptop projects__icon"></i>
-                <h3 className="projects__title">Bone Implants</h3>
+            <i class="uil uil-shopping-basket projects__icon"></i>
+                <h3 className="projects__title">ADYA</h3>
             </div>
 
-            <span className="projects__button" onClick={()=>toggleTab(3)}>View More
+            <span className="projects__button" onClick={() => toggleTab(3)}>View More
             <i className="uil uil-arrow-right projects__button-icon"></i>
             </span>
 
             <div className={toggleState === 3 ? "projects__modal active-modal" : "projects__modal"}>
                 <div className="projects__modal-content">
-                    <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                    <h3 className="projects__modal-title">Alternate Materials on Human Femur Bone</h3>
+                    <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
+                    <h3 className="projects__modal-title">E-Commerce application for real-time client</h3>
                     <p className="projects__modal-description">
-                        This projects is proposed for a journal in scopus.
+                        Product purchasing
                     </p>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Hard and rigid material.</p>
+                            <p className="projects__modal-info">Products adding by admin.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Longer lifetime of implants.</p>
+                            <p className="projects__modal-info">Payment integration.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Implants are bulletproof materials.</p>
+                            <p className="projects__modal-info">Delivery assistance.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">No reactions with human tissues.</p>
+                            <p className="projects__modal-info">Containerised.</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">No side effects.</p>
+                            <p className="projects__modal-info">PostgreSQL.</p>
                         </li>
                     </ul>
                 </div>
@@ -171,8 +176,8 @@ const Projects = () => {
 
         <div className="projects__content">
             <div>
-                <i className="uil uil-snowflake projects__icon"></i>
-                <h3 className="projects__title">Nanorefrigerants</h3>
+                <i className="uil uil-car projects__icon"></i>
+                <h3 className="projects__title">TAXIFY</h3>
             </div>
 
             <span className="projects__button" onClick={()=>toggleTab(4)}>View More
@@ -182,40 +187,78 @@ const Projects = () => {
             <div className={toggleState === 4 ? "projects__modal active-modal" : "projects__modal"}>
                 <div className="projects__modal-content">
                     <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                    <h3 className="projects__modal-title">Nanorefrigerants</h3>
+                    <h3 className="projects__modal-title">Taxi-Booking app</h3>
                     <p className="projects__modal-description">
-                        The whole setup is verified using taguchi analysis and ANOVA software.
+                        Users and drivers usage
                     </p>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Higher COP compared to others.</p>
+                            <p className="projects__modal-info">Accurate location</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Less Global Warming Potential.</p>
+                            <p className="projects__modal-info">Direct contact with Driver</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Low Ozone Layer Depletion.</p>
+                            <p className="projects__modal-info">Payment integration</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">Usage of natural oils lower the emission of CFCs</p>
+                            <p className="projects__modal-info">Booking history</p>
                         </li>
                     </ul>
                     <ul className="projects__modal-projects grid">
                         <li className="projects__modal-points">
                             <i className="uil uil-check-circle projects__modal-icon"></i>
-                            <p className="projects__modal-info">No usage of HCFCs</p>
+                            <p className="projects__modal-info">Fully responsive.</p>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+
+       
+
+
+        <div className="projects__content">
+            <div>
+                <i className="uil uil-blogger projects__icon"></i>
+                <h3 className="projects__title">BLOGGER +</h3>
+            </div>
+
+            <span className="projects__button" onClick={()=>toggleTab(5)}>View More
+            <i className="uil uil-arrow-right projects__button-icon"></i>
+            </span>
+
+            <div className={toggleState === 5 ? "projects__modal active-modal" : "projects__modal"}>
+                <div className="projects__modal-content">
+                    <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
+                    <h3 className="projects__modal-title">Blogger Plus</h3>
+                    <p className="projects__modal-description">
+                        A One-stop blogging website.
+                    </p>
+                    <ul className="projects__modal-projects grid">
+                        <li className="projects__modal-points">
+                            <i className="uil uil-check-circle projects__modal-icon"></i>
+                            <p className="projects__modal-info">Easy posting.</p>
+                        </li>
+                    </ul>
+                    <ul className="projects__modal-projects grid">
+                        <li className="projects__modal-points">
+                            <i className="uil uil-check-circle projects__modal-icon"></i>
+                            <p className="projects__modal-info">User friendly UI.</p>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>

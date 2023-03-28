@@ -15,7 +15,7 @@ const About = () => {
             <div className="about__data">
                 <Info />
                 <p className="about__description">
-            Fresher with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. Skilled leader who has the proven ability to motivate, educate, and manage a team.
+            A budding Full Stack Developer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. Skilled leader who has the proven ability to motivate, educate, and manage a team.
             </p>
             <a download="" href={CV} className="button button--flex">Download CV
             <svg

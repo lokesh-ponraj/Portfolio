@@ -7,13 +7,13 @@ const Header = () => {
   return (
     <header className="header">
         <nav className="nav container">
-            <a href="index.html" className="nav__logo">Lokesh</a>
+            <a href="index.html" className="nav__logo">Lokesh Ponraj</a>
 
             <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
                 <ul className="nav__list grid">
                     {/* item 1 */}
                     <li className="nav__item">
-                        <a href="#home" className="nav__link active__link">
+                        <a href="#home" className="nav__link">
                              <i className="uil uil-estate nav__icon"></i>Home
                         </a>
                     </li>

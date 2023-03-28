@@ -24,15 +24,14 @@ const Contact = () => {
                             <i className="bx bx-mail-send contact__card-icon"></i>
 
                             <h3 className="contact__card-title">Email</h3>
-                            <span className="contact__card-data">lokeshmech157@gmail.com</span>
 
-                            <a href="mailto:lokeshmech157@gmail" className="contact__button">Text Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
+
+                            <a href="mailto:tech.lokeshponraj@gmail" className="contact__button">Email Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                         </div>
                         <div className="contact__card">
                             <i className="bx bxl-whatsapp contact__card-icon"></i>
 
                             <h3 className="contact__card-title">Mobile/Whatsapp</h3>
-                            <span className="contact__card-data">+91 63836 31104</span>
 
                             <a href="https://api.whatsapp.com/send/?phone=%2B916383631104&text&type=phone_number&app_absent=0" className="contact__button">Text Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                         </div>
@@ -40,9 +39,7 @@ const Contact = () => {
                             <i className="bx bxl-instagram contact__card-icon"></i>
 
                             <h3 className="contact__card-title">Instagram</h3>
-                            <span className="contact__card-data">_lok_iz_</span>
-
-                            <a href="https://www.instagram.com/_lok_iz_/" className="contact__button">Text Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
+                            <a href="https://www.instagram.com/lokesh_ponraj/" className="contact__button">Text Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                         </div>
                     </div>
                 </div>

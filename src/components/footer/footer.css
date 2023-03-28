@@ -43,6 +43,13 @@
     display: block;
     margin-top: 2.5rem;
     text-align: center;
+    color: var(--title-color-dark);
+    font-size: var(--larger-font-size);
+}
+
+.footer__mastercopy{
+    display: block;
+    text-align: center;
     color: var(--title-color);
     font-size: var(--smaller-font-size);
 }

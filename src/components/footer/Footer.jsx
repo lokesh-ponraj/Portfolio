@@ -20,12 +20,14 @@ const Footer = () => {
             </ul>
 
             <div className="footer__social">
-            <a href="https://www.instagram.com/" className="footer__social-link" target="_blank"><i class="bx bxl-instagram"></i></a>
-            <a href="https://www.github.com/" className="footer__social-link" target="_blank"><i class="bx bxl-github"></i></a>
-            <a href="https://www.whatsapp.com/" className="footer__social-link" target="_blank"><i class="bx bxl-whatsapp"></i></a>
-            <a href="https://www.facebook.com/" className="footer__social-link" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/lokesh_ponraj" className="footer__social-link" target="_blank"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link" target="_blank"><i class="bx bxl-github"></i></a>
+            <a href="https://www.twitter.com/Lokesh_Ponraj" className="footer__social-link" target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.facebook.com/tech.lokesh.ponraj" className="footer__social-link" target="_blank"><i class="bx bxl-facebook"></i></a>
             </div>
-            <span className="footer__copy">&#169; LokeshPonraj.me. All rights reserved.</span>
+            <h4 className="footer__copy">&#169; LokeshPonraj</h4>
+            <span className='footer__mastercopy'>All rights reserved</span>
+
         </div>
     </footer>
   )
