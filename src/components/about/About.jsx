@@ -4,8 +4,8 @@ import AboutImg from '../../assets/about.jpg'
 import CV from '../../assets/CV.pdf'
 import Info from './Info'
 import { motion } from 'framer-motion'
-import NewImg from '../../assets/cuate.svg'
-import { hover } from '@testing-library/user-event/dist/hover'
+// import NewImg from '../../assets/cuate.svg'
+// import { hover } from '@testing-library/user-event/dist/hover'
 
 
 

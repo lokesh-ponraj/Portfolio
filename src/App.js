@@ -11,8 +11,8 @@ import { motion} from 'framer-motion';
 // import { useAnimation } from 'framer-motion';
 // import { useState } from 'react';
 // import { useEffect } from 'react';
-import { useViewportScroll } from 'framer-motion';
-import { useTransform } from 'framer-motion';
+// import { useViewportScroll } from 'framer-motion';
+// import { useTransform } from 'framer-motion';
 
 
 

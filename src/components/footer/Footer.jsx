@@ -26,10 +26,10 @@ const Footer = () => {
                 </ul>
 
                 <div className="footer__social">
-                    <a href="https://www.instagram.com/lokesh_ponraj" className="footer__social-link_insta" target="_blank"><i class="bx bxl-instagram"></i></a>
-                    <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link_github" target="_blank"><i class="bx bxl-github"></i></a>
-                    <a href="https://www.x.com/Lokesh_Ponraj" className="footer__social-link_x" target="_blank"><i class="bx bxl-twitter"></i></a>
-                    <a href="https://www.facebook.com/tech.lokesh.ponraj" className="footer__social-link_facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                    <a href="https://www.instagram.com/lokesh_ponraj" className="footer__social-link_insta" target="_blank" rel='noreferrer'><i class="bx bxl-instagram"></i></a>
+                    <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link_github" target="_blank" rel='noreferrer'><i class="bx bxl-github"></i></a>
+                    <a href="https://www.x.com/Lokesh_Ponraj" className="footer__social-link_x" target="_blank" rel='noreferrer'><i class="bx bxl-twitter"></i></a>
+                    <a href="https://www.facebook.com/tech.lokesh.ponraj" className="footer__social-link_facebook" target="_blank" rel='noreferrer'><i class="bx bxl-facebook"></i></a>
                 </div>
                 <h4 className="footer__copy">&#169; LokeshPonraj</h4>
                 <span className='footer__mastercopy'>All rights reserved</span>
