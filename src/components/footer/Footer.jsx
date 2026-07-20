@@ -6,12 +6,14 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer__container container">
-                <motion.h1 transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: 'loop',
-                    ease: "easeInOut",
-                }} className="footer__title">Lokesh</motion.h1>
+                <motion.a
+                    href="#home"
+                    className="footer__title"
+                    whileHover={{ letterSpacing: '0.01em' }}
+                    transition={{ duration: 0.3 }}
+                >
+                    Lokesh Ponraj
+                </motion.a>
 
                 <ul className="footer__list">
                     <li>
@@ -23,17 +25,22 @@ const Footer = () => {
                     <li>
                         <a href="#projects" className="footer__link">Projects</a>
                     </li>
+                    <li>
+                        <a href="#contact" className="footer__link">Contact</a>
+                    </li>
                 </ul>
 
                 <div className="footer__social">
-                    <a href="https://www.instagram.com/lokesh_ponraj" className="footer__social-link_insta" target="_blank" rel='noreferrer'><i class="bx bxl-instagram"></i></a>
-                    <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link_github" target="_blank" rel='noreferrer'><i class="bx bxl-github"></i></a>
-                    <a href="https://www.x.com/Lokesh_Ponraj" className="footer__social-link_x" target="_blank" rel='noreferrer'><i class="bx bxl-twitter"></i></a>
-                    <a href="https://www.facebook.com/tech.lokesh.ponraj" className="footer__social-link_facebook" target="_blank" rel='noreferrer'><i class="bx bxl-facebook"></i></a>
+                    <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link" target="_blank" rel='noreferrer' aria-label="GitHub"><i className="bx bxl-github"></i></a>
+                    {/* TODO: swap in the real LinkedIn profile URL */}
+                    <a href="#" className="footer__social-link" target="_blank" rel='noreferrer' aria-label="LinkedIn"><i className="bx bxl-linkedin"></i></a>
+                    <a href="mailto:tech.lokeshponraj@gmail" className="footer__social-link" aria-label="Email"><i className="bx bx-mail-send"></i></a>
                 </div>
-                <h4 className="footer__copy">&#169; LokeshPonraj</h4>
-                <span className='footer__mastercopy'>All rights reserved</span>
 
+                <div className="footer__bottom">
+                    <span>&#169; Lokesh Ponraj</span>
+                    <span>All rights reserved</span>
+                </div>
             </div>
         </footer>
     )

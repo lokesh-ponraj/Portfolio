@@ -1,0 +1,46 @@
+.watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.watermark--left {
+  justify-content: flex-start;
+}
+
+.watermark--right {
+  justify-content: flex-end;
+}
+
+.watermark__text {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(4.5rem, 16vw, 13rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-strong);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.watermark--left .watermark__text {
+  margin-left: -0.03em;
+}
+
+.watermark--right .watermark__text {
+  margin-right: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .watermark__text {
+    opacity: 0.4;
+  }
+}

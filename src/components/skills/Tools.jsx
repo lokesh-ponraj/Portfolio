@@ -4,24 +4,25 @@ import { motion } from 'framer-motion'
 const LEVEL_DOTS = { Beginner: 1, Intermediate: 2, Advanced: 3 }
 
 const SKILLS = [
-  { name: 'HTML/CSS', level: 'Advanced' },
-  { name: 'React', level: 'Advanced' },
-  { name: 'React Native', level: 'Intermediate' },
-  { name: 'Tailwind', level: 'Advanced' },
-  { name: 'Bootstrap', level: 'Intermediate' },
-  { name: 'Angular', level: 'Intermediate' },
+  { name: 'Git', level: 'Advanced' },
+  { name: 'Docker', level: 'Advanced' },
+  { name: 'AWS EC2', level: 'Advanced' },
+  { name: 'GCP', level: 'Intermediate' },
+  { name: 'Apache2', level: 'Advanced' },
+  { name: 'Firebase', level: 'Intermediate' },
+  { name: 'MongoDB', level: 'Advanced' },
 ]
 
-const Frontend = () => {
+const Tools = () => {
   return (
     <motion.div
       className="skills__content"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-10% 0px' }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h3 className="skills__title">Frontend</h3>
+      <h3 className="skills__title">Tools &amp; Cloud</h3>
 
       <div className="skills__box">
         {SKILLS.map((skill) => (
@@ -42,4 +43,4 @@ const Frontend = () => {
   )
 }
 
-export default Frontend
+export default Tools
