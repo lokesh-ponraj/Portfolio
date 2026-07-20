@@ -1,462 +1,261 @@
 import React, { useState } from 'react'
 import './projects.css'
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion'
+import { RevealText, SectionKicker } from '../common/RevealText'
+import Watermark from '../common/Watermark'
 
+const FEATURED = [
+  {
+    icon: 'uil uil-server-network',
+    accent: '#6366f1',
+    name: 'XSERP',
+    title: 'Industry ERP System',
+    role: 'Senior Developer — codebase, database & deployment owner',
+    description: 'A completely custom-built, industry-level ERP system.',
+    stack: ['Python', 'Django', 'JavaScript', 'SQLAlchemy', 'SQL', 'Microservices'],
+    points: [
+      'Owned the codebase, database, and deployment as senior developer and administrator on a legacy platform.',
+      'Replaced Django server-rendered forms with JSON REST APIs, driving a major speed improvement across the app.',
+      'Migrated a large volume of raw SQL queries into SQLAlchemy for maintainability and safety.',
+      'Introduced a microservice architecture on top of the original monolith.',
+      'Extended the platform with custom plugins for industry-specific ERP workflows.',
+    ],
+  },
+  {
+    icon: 'uil uil-mobile-android-alt',
+    accent: '#14b8a6',
+    name: 'PLM',
+    title: 'Product Lifecycle Management',
+    role: 'Built from the ground up',
+    description: 'A responsive web and mobile app for managing product lifecycles.',
+    stack: ['React Native', 'Supabase', 'JavaScript'],
+    points: [
+      'Built from scratch as a single React Native codebase targeting iOS, Android, and Web.',
+      'Used Supabase as the backend and database.',
+      'Delivered a fully responsive UI shared across all three platforms from one codebase.',
+    ],
+  },
+]
+
+const ARCHIVE = [
+  {
+    icon: 'uil uil-book',
+    accent: '#5b8def',
+    name: 'LMS',
+    title: 'Library Management System',
+    description: 'Django-based Project',
+    points: [
+      'Client and Server side.',
+      'Containerisation using Docker.',
+      'PostgreSQL Database Integrated.',
+      'Works on a virtual environment.',
+      'Bootstrap Components.',
+    ],
+  },
+  {
+    icon: 'uil uil-users-alt',
+    accent: '#22c55e',
+    name: 'CMS',
+    title: 'Club Management System',
+    description: 'Django-based Full stack app',
+    points: [
+      'Made for English language club.',
+      'Information about club activities.',
+      'Club members details.',
+      'Language Hub.',
+      'Dockerised.',
+    ],
+  },
+  {
+    icon: 'uil uil-shopping-basket',
+    accent: '#b06fe0',
+    name: 'ADYA',
+    title: 'E-Commerce application for real-time client',
+    description: 'Product purchasing',
+    points: [
+      'Products adding by admin.',
+      'Payment integration.',
+      'Delivery assistance.',
+      'Containerised.',
+      'PostgreSQL.',
+    ],
+  },
+  {
+    icon: 'uil uil-car',
+    accent: '#ff6f6f',
+    name: 'TAXIFY',
+    title: 'Taxi-Booking app',
+    description: 'Users and drivers usage',
+    points: [
+      'Accurate location.',
+      'Direct contact with Driver.',
+      'Payment integration.',
+      'Booking history.',
+      'Fully responsive.',
+    ],
+  },
+  {
+    icon: 'uil uil-blogger',
+    accent: '#e8c547',
+    name: 'BLOGGER +',
+    title: 'Blogger Plus',
+    description: 'A One-stop blogging website.',
+    points: ['Easy posting.', 'User friendly UI.'],
+  },
+  {
+    icon: 'uil uil-glass-martini',
+    accent: '#5865a8',
+    name: 'VHS',
+    title: 'Vibe HotSpot',
+    description: 'A Nightlife mobile app.',
+    points: [
+      'Easy posting.',
+      'User friendly UI.',
+      'Maps API integration.',
+      'Live tracking.',
+      'Online Payments integration.',
+    ],
+  },
+  {
+    icon: 'uil uil-subway',
+    accent: '#d4b83f',
+    name: 'ASSISTROAD',
+    title: 'AssistRoad',
+    description: 'An AI-powered classifier using CNN.',
+    points: [
+      'Created using Convolutional Neural Networks.',
+      'Superfast simulation of results.',
+      'Graphs integration.',
+      'Detailed and lightweight.',
+      'Accurate upto 96%.',
+    ],
+  },
+  {
+    icon: 'uil uil-map-pin',
+    accent: '#ea5ea8',
+    name: 'UNIMAX',
+    title: 'Unimax',
+    description: 'This is a GPS tracking system using Django.',
+    points: [
+      'Easy tracking.',
+      'Latest UI for Dashboard.',
+      'Optimised and Simplified.',
+      'Multiple user tracking.',
+      'Report generation.',
+    ],
+  },
+]
+
+const ProjectRow = ({ project, isOpen, onToggle, compact }) => (
+  <li
+    className={[
+      'projects__row',
+      isOpen && 'projects__row--open',
+      compact && 'projects__row--compact',
+    ]
+      .filter(Boolean)
+      .join(' ')}
+    style={{ '--project-accent': project.accent }}
+  >
+    <button
+      className="projects__row-head"
+      onClick={onToggle}
+      aria-expanded={isOpen}
+      data-cursor-label={isOpen ? 'Collapse' : 'Expand'}
+    >
+      <i className={`${project.icon} projects__icon`}></i>
+      <span className="projects__name">{project.name}</span>
+      <span className="projects__tagline">{project.description}</span>
+
+      {project.stack && (
+        <span className="projects__stack">
+          {project.stack.map((tech) => (
+            <span className="projects__stack-item" key={tech}>
+              {tech}
+            </span>
+          ))}
+        </span>
+      )}
+
+      <span className={isOpen ? 'projects__plus projects__plus--open' : 'projects__plus'}>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          className="projects__row-body"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="projects__row-inner">
+            <h3 className="projects__title">{project.title}</h3>
+            {project.role && <p className="projects__role">{project.role}</p>}
+            <ul className="projects__tags">
+              {project.points.map((point) => (
+                <li key={point} className="projects__tag">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </li>
+)
 
 const Projects = () => {
-    const [toggleState, setToggleState] = useState(0);
+  const [openKey, setOpenKey] = useState(null)
 
-    const toggleTab = (index) => {
-        setToggleState(index);
-    }
-    return (
-        <section className="projects section" id="projects">
-            <h2 className="section__title">PROJECTS</h2>
-            <span className="section__subtitle">That I have made</span>
+  const toggle = (key) => {
+    setOpenKey((prev) => (prev === key ? null : key))
+  }
 
-            <div className="projects__container container grid">
+  return (
+    <section className="projects section" id="projects">
+      <Watermark text="Work" align="left" />
+      <div className="container">
+        <div className="section-head">
+          <SectionKicker>Projects</SectionKicker>
+          <h2 className="heading-lg">
+            <RevealText text="Industry work I've built and owned." />
+          </h2>
+        </div>
 
+        <ul className="projects__list">
+          {FEATURED.map((project) => (
+            <ProjectRow
+              key={project.name}
+              project={project}
+              isOpen={openKey === project.name}
+              onToggle={() => toggle(project.name)}
+            />
+          ))}
+        </ul>
 
-                {/* NUMBER 1 LMS */}
-                <div >
-                    <motion.div
-                        whileHover={{
-                            boxShadow: "0px 20px 40px rgb(100, 153, 233, 0.7)",
-                            transition: { duration: 0.3 },
-                        }}
-                        className="projects__content" onClick={() => toggleTab(1)}>
-                        <i className="uil uil-book projects__icon"></i>
-                        <motion.h3 className="projects__title">LMS</motion.h3>
-                    </motion.div>
+        <div className="projects__archive-head">
+          <span className="kicker">Earlier &amp; academic work</span>
+        </div>
 
-                    {/* <span className="projects__button">View More    
-                            <i className="uil uil-arrow-right projects__button-icon"></i>
-                        </span> */}
-
-                    <div className={toggleState === 1 ? "projects__modal active-modal" : "projects__modal"}
-                    >
-                        <div className="projects__modal-content">
-                            <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
-                            <h3 className="projects__modal-title">Library Management System</h3>
-                            <p className="projects__modal-description">
-                                Django-based Project
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Client and Server side.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Containerisation using Docker.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">PostgreSQL Database Integrated.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Works on a virtual environment.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Bootstrap Components.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-
-                {/* NUMBER 2 CMS */}
-
-                <div >
-                    <motion.div
-                        whileHover={{
-                            boxShadow: "0px 20px 40px rgb(6, 208, 1, 0.7)",
-                            transition: { duration: 0.3 },
-                        }} className="projects__content" onClick={() => toggleTab(2)}>
-                        <i class="uil uil-users-alt projects__icon"></i>
-                        <h3 className="projects__title">CMS</h3>
-                    </motion.div>
-                    {/* 
-                    <span className="projects__button" onClick={() => toggleTab(2)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 2 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
-                            <h3 className="projects__modal-title">Club Management System</h3>
-                            <p className="projects__modal-description">
-                                Django-based Full stack app
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Made for English language club.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Information about club activities.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">CLub members details.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Language Hub.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Dockerised.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                {/* NUMBER 3 ADYA */}
-
-                <div >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(175, 71, 210, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(3)}>
-                        <i class="uil uil-shopping-basket projects__icon"></i>
-                        <h3 className="projects__title">ADYA</h3>
-                    </motion.div>
-
-                    {/* <span className="projects__button" onClick={() => toggleTab(3)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 3 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i onClick={() => toggleTab(0)} className="uil uil-times projects__modal-close"></i>
-                            <h3 className="projects__modal-title">E-Commerce application for real-time client</h3>
-                            <p className="projects__modal-description">
-                                Product purchasing
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Products adding by admin.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Payment integration.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Delivery assistance.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Containerised.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">PostgreSQL.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                {/* NUMBER 4 TAXIFY */}
-                <div >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(255, 104, 104, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(4)}>
-                        <i className="uil uil-car projects__icon"></i>
-                        <h3 className="projects__title">TAXIFY</h3>
-                    </motion.div>
-
-                    {/* <span className="projects__button" onClick={() => toggleTab(4)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 4 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                            <h3 className="projects__modal-title">Taxi-Booking app</h3>
-                            <p className="projects__modal-description">
-                                Users and drivers usage
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Accurate location</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Direct contact with Driver</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Payment integration</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Booking history</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Fully responsive.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                {/* NUMBER 5 BLOGGER */}
-
-                <div >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(255, 255, 0, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(5)}>
-                        <i className="uil uil-blogger projects__icon"></i>
-                        <h3 className="projects__title">BLOGGER +</h3>
-                    </motion.div>
-
-                    {/* <span className="projects__button" onClick={() => toggleTab(5)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 5 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                            <h3 className="projects__modal-title">Blogger Plus</h3>
-                            <p className="projects__modal-description">
-                                A One-stop blogging website.
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Easy posting.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">User friendly UI.</p>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                {/* NUMBER 6 VHS */}
-                <div >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(41, 52, 98, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(6)}>
-                        <i className="uil uil-glass-martini projects__icon"></i>
-                        <h3 className="projects__title">VHS</h3>
-                    </motion.div>
-
-                    {/* <span className="projects__button" onClick={() => toggleTab(6)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 6 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                            <h3 className="projects__modal-title">Vibe HotSpot</h3>
-                            <p className="projects__modal-description">
-                                A Nightlife mobile app.
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Easy posting.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">User friendly UI.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Maps API intergration.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Live tracking.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Online Payments integration.</p>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                {/* NUMBER 7 ASSISTROAD */}
-                <div >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(255, 250, 0, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(7)}>
-                        <i className="uil uil-subway projects__icon"></i>
-                        <h3 className="projects__title">ASSISTROAD</h3>
-                    </motion.div>
-
-                    {/* <span className="projects__button" onClick={() => toggleTab(7)}>View More
-                        <i className="uil uil-arrow-right projects__button-icon"></i>
-                    </span> */}
-
-                    <div className={toggleState === 7 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                            <h3 className="projects__modal-title">AssistRoad</h3>
-                            <p className="projects__modal-description">
-                                An AI-powered classifier using CNN.
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Created using Convolutional Neural Networks.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Superfast simulation of results.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Graphs integration.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Detailed and lightweight.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Accurate upto 96%.</p>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
-                {/* UNIMAX */}
-                <div  >
-                    <motion.div whileHover={{
-                        boxShadow: "0px 20px 40px rgb(247, 39, 152, 0.7)",
-                        transition: { duration: 0.3 },
-                    }} className="projects__content" onClick={() => toggleTab(8)}>
-                        <i className="uil uil-map-pin projects__icon"></i>
-                        <h3 className="projects__title">UNIMAX</h3>
-                    </motion.div>
-
-
-
-                    <div className={toggleState === 8 ? "projects__modal active-modal" : "projects__modal"}>
-                        <div className="projects__modal-content">
-                            <i className="uil uil-times projects__modal-close" onClick={() => toggleTab(0)}></i>
-                            <h3 className="projects__modal-title">Unimax</h3>
-                            <p className="projects__modal-description">
-                                This is a GPS tracking system using Django.
-                            </p>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Easy tracking.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Latest UI for Dashboard.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Optimised and Simplified.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Multiple user tracking.</p>
-                                </li>
-                            </ul>
-                            <ul className="projects__modal-projects grid">
-                                <li className="projects__modal-points">
-                                    <i className="uil uil-check-circle projects__modal-icon"></i>
-                                    <p className="projects__modal-info">Report generation.</p>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-    )
+        <ul className="projects__list projects__list--compact">
+          {ARCHIVE.map((project) => (
+            <ProjectRow
+              key={project.name}
+              project={project}
+              isOpen={openKey === project.name}
+              onToggle={() => toggle(project.name)}
+              compact
+            />
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
 }
 
-export default Projects 
+export default Projects
