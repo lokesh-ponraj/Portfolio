@@ -11,7 +11,7 @@ const STATUS_MESSAGE = {
   error: 'Something went wrong, please try again.',
 }
 
-const EMAIL = 'tech.lokeshponraj@gmail'
+const EMAIL = 'tech.lokeshponraj@gmail.com'
 
 const Contact = () => {
   const form = useRef();

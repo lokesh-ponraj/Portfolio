@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import './home.css'
 import Social from './Social'
 import Data from './Data'
+import HeroTerminal from './HeroTerminal'
 import Scroll from './Scroll'
 import Constellation from '../common/Constellation'
 import {
@@ -104,7 +105,10 @@ const Home = () => {
       <HeroVisual />
       <div className="home__container container">
         <Social />
-        <Data />
+        <div className="home__grid">
+          <Data />
+          <HeroTerminal />
+        </div>
       </div>
       <Scroll />
     </section>

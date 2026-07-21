@@ -2,6 +2,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { RevealText, SectionKicker } from '../common/RevealText'
 
+const HIGHLIGHTS = [
+  { value: '4+', label: 'Years shipping production code' },
+  { value: '10+', label: 'Systems built & owned' },
+  { value: '3', label: 'Platforms — web, mobile, API' },
+]
+
 const Data = () => {
   return (
     <div className="home__data">
@@ -18,14 +24,31 @@ const Data = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        4 years specialising in customising, migrating, and optimising full-stack systems.
+        4 years specialising in customising, migrating, and optimising full-stack systems —
+        from legacy monoliths to microservices, owned end to end.
       </motion.p>
 
       <motion.div
+        className="home__highlights"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {HIGHLIGHTS.map((item) => (
+          <div className="home__highlight" key={item.label}>
+            <span className="home__highlight-value">{item.value}</span>
+            <span className="home__highlight-label">{item.label}</span>
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="home__cta-row"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.a
           href="#contact"
@@ -44,6 +67,31 @@ const Data = () => {
               d="M10.11 14.7052C9.92005 14.7052 9.73005 14.6352 9.58005 14.4852C9.29005 14.1952 9.29005 13.7152 9.58005 13.4252L13.16 9.83518C13.45 9.54518 13.93 9.54518 14.22 9.83518C14.51 10.1252 14.51 10.6052 14.22 10.8952L10.64 14.4852C10.5 14.6352 10.3 14.7052 10.11 14.7052Z"
               fill="currentColor"
             ></path>
+          </svg>
+        </motion.a>
+
+        <motion.a
+          href="#projects"
+          className="home__link-secondary"
+          data-cursor-label="View"
+          whileHover={{ y: -2 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        >
+          See the work
+          <svg
+            className="home__link-secondary-icon"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M7 17L17 7M17 7H8M17 7V16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </motion.a>
       </motion.div>

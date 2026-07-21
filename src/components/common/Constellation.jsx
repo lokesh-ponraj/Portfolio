@@ -3,7 +3,7 @@ import { useReducedMotion } from 'framer-motion'
 import './constellation.css'
 
 const DOT_COLOR = 'rgba(32, 31, 29, 0.4)'
-const LINK_RGB = '181, 105, 15'
+const LINK_RGB = '30, 63, 143'
 const LINK_DISTANCE = 120
 const AREA_PER_DOT = 15000
 
@@ -57,8 +57,8 @@ const Constellation = () => {
       // Soft light around the pointer, like it's illuminating the field
       if (mouse.active) {
         const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, MOUSE_LINK_DISTANCE + 40)
-        glow.addColorStop(0, 'rgba(181, 105, 15, 0.1)')
-        glow.addColorStop(1, 'rgba(181, 105, 15, 0)')
+        glow.addColorStop(0, `rgba(${LINK_RGB}, 0.12)`)
+        glow.addColorStop(1, `rgba(${LINK_RGB}, 0)`)
         ctx.fillStyle = glow
         ctx.fillRect(
           mouse.x - MOUSE_LINK_DISTANCE - 40,

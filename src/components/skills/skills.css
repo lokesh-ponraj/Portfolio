@@ -103,6 +103,12 @@
 /*=============== BREAKPOINTS ===============*/
 @media screen and (max-width: 992px) {
   .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .skills__container {
     grid-template-columns: 1fr;
   }
 }

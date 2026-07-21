@@ -74,7 +74,7 @@ const Qualification = () => {
                 <motion.span
                   className="qualification__dot"
                   initial={{ scale: 0.4, backgroundColor: 'var(--ink-faint)' }}
-                  whileInView={{ scale: 1, backgroundColor: '#b5690f' }}
+                  whileInView={{ scale: 1, backgroundColor: '#1e3f8f' }}
                   viewport={{ once: true, margin: '-10% 0px' }}
                   transition={{ duration: 0.5, delay: (i % 4) * 0.08 + 0.1 }}
                 />

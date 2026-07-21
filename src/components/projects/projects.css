@@ -170,7 +170,7 @@
 }
 
 /*=============== BREAKPOINTS ===============*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .projects__row-head {
     flex-wrap: wrap;
     row-gap: 0.5rem;

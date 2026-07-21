@@ -28,7 +28,7 @@
   top: -8rem;
   right: -6rem;
   background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.22;
+  opacity: 0.16;
 }
 
 .home__blob--ink {
@@ -36,8 +36,8 @@
   height: 24rem;
   bottom: -6rem;
   left: 8%;
-  background: radial-gradient(circle, #a9926b 0%, transparent 70%);
-  opacity: 0.28;
+  background: radial-gradient(circle, #7c8aa8 0%, transparent 70%);
+  opacity: 0.22;
 }
 
 .home__ring {
@@ -67,6 +67,13 @@
   width: 100%;
 }
 
+.home__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  column-gap: clamp(2rem, 6vw, 5rem);
+}
+
 .home__data {
   max-width: 640px;
 }
@@ -74,14 +81,101 @@
 .home__title {
   margin: 0.9rem 0 1.35rem;
   color: var(--ink);
+  font-size: var(--big-font-size);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .home__description {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.65;
   color: var(--ink-muted);
-  max-width: 420px;
-  margin-bottom: 2.25rem;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+/*=============== HIGHLIGHT STRIP ===============*/
+.home__highlights {
+  display: flex;
+  align-items: stretch;
+  column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid var(--line);
+  max-width: 480px;
+}
+
+.home__highlight {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.35rem;
+}
+
+.home__highlight-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home__highlight-label {
+  font-size: var(--tiny-font-size);
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+/*=============== CTA ROW ===============*/
+.home__cta-row {
+  display: flex;
+  align-items: center;
+  column-gap: 1.75rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.home__link-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  color: var(--ink);
+}
+
+.home__link-secondary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out-expo), background-color var(--dur-fast);
+}
+
+.home__link-secondary:hover {
+  color: var(--accent);
+}
+
+.home__link-secondary:hover::after {
+  transform: scaleX(1);
+  background: var(--accent);
+  opacity: 1;
+}
+
+.home__link-secondary-icon {
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.home__link-secondary:hover .home__link-secondary-icon {
+  transform: translate(2px, -2px);
 }
 
 /*=============== SOCIAL RAIL ===============*/
@@ -148,6 +242,21 @@
 }
 
 /*=============== BREAKPOINTS ===============*/
+@media screen and (max-width: 1180px) {
+  .home__grid {
+    grid-template-columns: 1fr;
+    row-gap: 3.5rem;
+  }
+
+  .home__data {
+    max-width: 640px;
+  }
+
+  .home__terminal-wrap {
+    max-width: 460px;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .home__social {
     display: none;
@@ -177,5 +286,27 @@
 
   .home__description {
     max-width: initial;
+  }
+
+  .home__highlights {
+    max-width: initial;
+    column-gap: 1.5rem;
+  }
+
+  .home__terminal-wrap {
+    max-width: initial;
+  }
+}
+
+/* Short viewports (landscape phones/tablets) — hero shouldn't force a full 100vh */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .home {
+    min-height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .home__scroll,
+  .home__social {
+    display: none;
   }
 }
