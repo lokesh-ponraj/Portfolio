@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { href: '#about', label: 'About' },
   { href: '#qualification', label: 'Journey' },
   { href: '#projects', label: 'Projects' },
+  { href: 'https://lokesh-ponraj-blogs.netlify.app/', label: 'Blog', external: true },
   { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -32,7 +33,11 @@ const Header = () => {
         <ul className="nav__list">
           {NAV_LINKS.map((link) => (
             <li className="nav__item" key={link.href}>
-              <a href={link.href} className="nav__link">
+              <a
+                href={link.href}
+                className="nav__link"
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
                 {link.label}
               </a>
             </li>
@@ -67,7 +72,12 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <a href={link.href} className="nav__overlay-link" onClick={closeMenu}>
+                  <a
+                    href={link.href}
+                    className="nav__overlay-link"
+                    onClick={closeMenu}
+                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
                     {link.label}
                   </a>
                 </motion.li>

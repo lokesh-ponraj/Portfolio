@@ -26,15 +26,17 @@ const Footer = () => {
                         <a href="#projects" className="footer__link">Projects</a>
                     </li>
                     <li>
+                        <a href="https://lokesh-ponraj-blogs.netlify.app/" className="footer__link" target="_blank" rel="noreferrer">Blog</a>
+                    </li>
+                    <li>
                         <a href="#contact" className="footer__link">Contact</a>
                     </li>
                 </ul>
 
                 <div className="footer__social">
                     <a href="https://www.github.com/lokesh-ponraj" className="footer__social-link" target="_blank" rel='noreferrer' aria-label="GitHub"><i className="bx bxl-github"></i></a>
-                    {/* TODO: swap in the real LinkedIn profile URL */}
-                    <a href="#" className="footer__social-link" target="_blank" rel='noreferrer' aria-label="LinkedIn"><i className="bx bxl-linkedin"></i></a>
-                    <a href="mailto:tech.lokeshponraj@gmail" className="footer__social-link" aria-label="Email"><i className="bx bx-mail-send"></i></a>
+                    <a href="https://www.linkedin.com/in/lokesh-ponraj/" className="footer__social-link" target="_blank" rel='noreferrer' aria-label="LinkedIn"><i className="bx bxl-linkedin"></i></a>
+                    <a href="mailto:tech.lokeshponraj@gmail.com" className="footer__social-link" aria-label="Email"><i className="bx bx-mail-send"></i></a>
                 </div>
 
                 <div className="footer__bottom">
